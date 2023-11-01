@@ -1,0 +1,12 @@
+# Ignore specific files
+file.txt
+secret.key
+
+# Ignore all files in a directory
+/logs/
+
+# Ignore all .log files
+*.log
+
+# Ignore all .tmp files anywhere in the project
+**/*.tmp
