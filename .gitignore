@@ -10,3 +10,6 @@ secret.key
 
 # Ignore all .tmp files anywhere in the project
 **/*.tmp
+
+# Ignore the node_modules directory
+node_modules/
