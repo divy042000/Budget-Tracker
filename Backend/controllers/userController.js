@@ -1,5 +1,5 @@
-const axios=require('axios');
-
+const axios = require("axios");
+const _ = require('lodash');
 
 // exports.postUserDetails=async(req,res,next);
 // {
@@ -21,38 +21,61 @@ const axios=require('axios');
 //         }
 
 //     })
-//     } 
+//     }
 //     catch
 //     {
 
 //     }
 // }
 
-exports.postUserPayInfo=async(req,res,next);
+exports.postUserPayInfo = async(req, res, next);
 {
- try{
-   const userPayData=req.body;
-   const userInfo={
-    category:userPayData.category,
-    mode:userPayData.mode,
-    amount:userPayData.amount,
-    date:userPayData.date,
-    time:userPayData.time,
-    receiver:userPayData.receiver,
-    payer:userPayData.payer
-   }
-   const apiUrl=``;
-   axios.post(apiUrl, postData)
-  .then(response => {
-    // Handle the successful response here.
-    console.log('Response data:', response.data);
-  })
-  .catch(error => {
-    // Handle any errors that occurred during the request.
-    console.error('Error:', error);
-  });
- }
- catch(error){
+  try {
+    const userPayData = req.body;
+    const userInfo = {
+      category: userPayData.category,
+      mode: userPayData.mode,
+      amount: userPayData.amount,
+      date: userPayData.date,
+      time: userPayData.time,
+      receiver: userPayData.receiver,
+      payer: userPayData.payer,
+    };
+    const apiUrl = ``;
+    const postData = userInfo;
+    axios
+      .post(apiUrl, postData)
+      .then((response) => {
+        // Handle the successful response here.
+        console.log("Response data:", response.data);
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during the request.
+        console.error("Error:", error);
+      });
+  } catch (error) {
     console.error(error);
- }   
+  }
 }
+
+exports.getUserModePayInfo = async (req, res, next) => {
+  try {
+    const apiUrl = ``;
+    const getData=req.query;
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        console.log("Response data:");
+        const data = response.data;
+        // Filter data based on person and month
+        const filteredData = _.filter(data, { person: 'John', month: 'January' });
+        // Count the number of each mode of payment
+        const countByMode = _.countBy(filteredData, 'mode');
+ 
+        console.log('Count by mode of payment:', countByMode);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  } catch (err) {}
+};

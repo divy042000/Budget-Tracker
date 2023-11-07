@@ -1,25 +1,16 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const MongoClient = require('mongodb').MongoClient;
-const uri = process.env.MongoDB_string;
-// console.log(uri);
-const client = new MongoClient(uri);
+const mongoose = require('mongoose');
 
-client.connect(err => {
- if (err) {
-   console.error('Failed to connect to MongoDB:', err);
-   return;
- }
 
- console.log('Connected to MongoDB with state:', client.isConnected() ? 'Connected' : 'Not Connected');
-
- const collection = client.db("test").collection("devices");
- // perform actions on the collection object
-
- client.close();
-});
-
+mongoose.connect(process.env.MongoDB_string, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Connected to database');
+    })
+    .catch((error) => {
+        console.error('Error connecting to database', error);
+    });
 
 
 
