@@ -1,41 +1,73 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Autocomplete from "@mui/material/Autocomplete";
 import axios from 'axios';
-
+import { ToastContainer } from 'react-toastify';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function PaymentForm() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [paymentMode, setPaymentMode] = useState("");
   const [amount, setAmount] = useState("");
-  const [receiverEmail, setReceiverEmail] = useState("");
-  const [senderEmail, setSenderEmail] = useState("");
-
+  const [receiverPhone, setReceiverPhone] = useState("");
+  const [senderPhone, setSenderPhone] = useState("");
+  // const [error, setError] = useState(null);
   const handleModeChange = (event) => {
     setPaymentMode(event.target.value);
   };
+  const handleSenderPhoneChange = (e) => {
+    setSenderPhone(e.target.value);
+    if (e.target.value === receiverPhone) {
+      toast.error('Sender and receiver phone numbers cannot be the same.', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+       });
+    } 
+  };
+  const handleReceiverPhoneChange = (e) => {
+    setReceiverPhone(e.target.value);
+    if (e.target.value === senderPhone) {
+      toast.error('Sender and receiver phone numbers cannot be the same.', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+       });
+    }
+  };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
     const formData = {
       category: selectedCategory,
       paymentMode: paymentMode,
       amount: amount,
-      receiverEmail: receiverEmail,
-      senderEmail: senderEmail,
+      receiverPhone: receiverPhone,
+      senderPhone: senderPhone,
     };
-
+    console.log(formData);
     try {
-      await axios.post("YOUR_API_ENDPOINT", formData).then((response) => {
+      await axios.post("", formData).then((response) => {
         console.log(response.data);
       });
       setSelectedCategory("");
       setPaymentMode("");
       setAmount("");
-      setReceiverEmail("");
-      setSenderEmail("");
+      setReceiverPhone("");
+      setSenderPhone("");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -172,8 +204,8 @@ export default function PaymentForm() {
         id="receiver"
         label="Receiver's Phone Number"
         // defaultValue=""
-        value={receiverEmail}
-        onChange={(e) => setReceiverEmail(e.target.value)}
+        value={receiverPhone}
+        onChange={handleReceiverPhoneChange}
         sx={{
           cursor: "pointer",
           fontWeight: 900,
@@ -196,8 +228,8 @@ export default function PaymentForm() {
         id="sender"
         label="Sender's Phone Number"
         // defaultValue=""
-        value={senderEmail}
-        onChange={(e) => setSenderEmail(e.target.value)}
+        value={senderPhone}
+        onChange={handleSenderPhoneChange}
         sx={{
           cursor: "pointer",
           fontWeight: 900,
@@ -219,6 +251,7 @@ export default function PaymentForm() {
       <Button variant="contained" type="submit">
         Submit
       </Button>
+      <ToastContainer />
     </Box>
   );
 }
