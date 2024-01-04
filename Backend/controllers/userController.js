@@ -36,8 +36,8 @@ exports.postUserPayInfo = async(req, res, next);
       category: userPayData.category,
       mode: userPayData.mode,
       amount: userPayData.amount,
-      date: userPayData.date,
-      time: userPayData.time,
+      date: 
+      time: 
       receiver: userPayData.receiver,
       payer: userPayData.payer,
     };
@@ -62,13 +62,16 @@ exports.getUserModePayInfo = async (req, res, next) => {
   try {
     const apiUrl = ``;
     const getData=req.query;
+    const email=getData.email;
+    const month=getData.month;
+    const mode=getData.mode; 
     axios
       .get(apiUrl)
       .then((response) => {
         console.log("Response data:");
         const data = response.data;
         // Filter data based on person and month
-        const filteredData = _.filter(data, { person: 'John', month: 'January' });
+        const filteredData = _.filter(data, { email: email, month: month });
         // Count the number of each mode of payment
         const countByMode = _.countBy(filteredData, 'mode');
  
