@@ -6,13 +6,13 @@ import {
 import './App.css'
 import ModeTracker from './components/trackerBox';
 import IntputPayInfo from './components/inputPayInfo';
-import signUp  from './components/Pages/signUp';
+import SignUp  from './components/Pages/signUp';
 function App() {
   return (
     <>  
     <BrowserRouter>
       <Routes>
-        <Route path="/signup" element={<signUp />}/>
+        <Route path="/signup" element={<SignUp />}/>
       </Routes>
     </BrowserRouter>
     </>
