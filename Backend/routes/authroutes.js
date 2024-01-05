@@ -6,6 +6,8 @@ const isAuthenticated = require("../middlewares/authcheckuser");
 var jwt = require("jsonwebtoken");
 const passport = require("passport");
 const cors = require("cors");
+
+
 // Handle POST request for
 // User sign up
 router.post("/signup", authcontroller.Signup);

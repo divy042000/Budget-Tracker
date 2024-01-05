@@ -89,8 +89,8 @@ const Signin = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    // Validate the password using the isValidPassword method from the User model
-    const isMatch = await user.isValidPassword(password);
+    // Validate the password using the bcrypt.compare method
+    const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(401).json({ error: "Invalid password" });
