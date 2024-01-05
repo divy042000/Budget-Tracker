@@ -1,13 +1,20 @@
-import { useState } from 'react'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import './App.css'
-// import ModeTracker from './components/modeTracker';
 import ModeTracker from './components/trackerBox';
 import IntputPayInfo from './components/inputPayInfo';
+import signUp  from './components/Pages/signUp';
 function App() {
   return (
-    <>
-    <IntputPayInfo></IntputPayInfo>
-    {/* <ModeTracker></ModeTracker>      */}
+    <>  
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signup" element={<signUp />}/>
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }
