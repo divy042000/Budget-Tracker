@@ -10,9 +10,13 @@ function login() {
   };
   return (
 <>
-<section className="">
-<form onSubmit={handleSubmit}>
-     <label>
+<section className="flex">
+<form  className="flex-col"  onSubmit={handleSubmit}>
+  <div>
+
+    
+  </div>
+     <label className="">
        Username:
        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
      </label>
