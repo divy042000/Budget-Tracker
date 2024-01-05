@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./src/App.css",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -20,6 +21,7 @@
     "chart.js": "^4.4.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
+    "react-cookie": "^7.0.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
     "react-toastify": "^9.1.3",
