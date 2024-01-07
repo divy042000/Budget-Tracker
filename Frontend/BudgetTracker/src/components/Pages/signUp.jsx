@@ -133,10 +133,17 @@ export default function SignUp() {
     navigate("/user");
   };
 
+  const navigatelogin = () => {
+    navigate('/login')
+  }
+
   return (
     <div className="flex flex-col items-start bg-no-repeat bg-cover bg-center
 		bg-[url('../public/images/loginimg.jpg')] justify-center min-h-screen w-full" >
-      <div className="max-w-md w-full space-y-8 mb-32 mx-56">
+      <div className="group">
+
+      
+      <div className="max-w-md animate-moveUpDown group-hover:animate-stopAnimation focus-within:transform-none w-full space-y-8  mb-32 mx-52 bg-[#f9f9f8] px-8 py-8 shadow-2xl rounded-2xl">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Sign Up
         </h2>
@@ -199,7 +206,12 @@ export default function SignUp() {
               Sign in
             </button>
           </div>
+          <div className="items-center justify-center w-full text-center font-medium">
+          Already have an account? <span className=" text-indigo-600 hover:text-indigo-500 cursor-pointer underline" onClick={navigatelogin}>Login here</span>
+        </div>
         </form>
+        
+      </div>
       </div>
     </div>
   );
