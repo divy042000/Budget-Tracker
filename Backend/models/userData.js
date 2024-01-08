@@ -5,10 +5,11 @@ const userData = new Schema({
   username: String,
   email: String,
   password: String,
-  profile: {
-    firstName: String,
-    lastName: String,
-  },
+  firstName: String,
+  lastName: String,
+  age: Number,
+  gender: String,
+  phoneNumber: String,
   createdAt: { type: Date, default: Date.now },
 });
 

@@ -7,13 +7,11 @@ var jwt = require("jsonwebtoken");
 const passport = require("passport");
 const cors = require("cors");
 
-
 // Handle POST request for
 // User sign up
 router.post("/signup", authcontroller.Signup);
 // User sign in
 router.post("/signin", authcontroller.Signin);
-
 
 // Use Passport.js middleware for protected routes
 router.get(
@@ -28,7 +26,7 @@ router.get(
 // Route for initiating Google OAuth authentication
 router.get(
   "/google",
-  cors({ origin: "http://localhost:3000", credentials: true }),
+  cors({ origin: "http://localhost:5000", credentials: true }),
   passport.authenticate("google", {
     scope: ["profile", "email"],
     prompt: "consent",
@@ -78,10 +76,10 @@ router.get("/google/callback", (req, res, next) => {
       });
 
       // Send the user data along with the response
-      return res.redirect("http://localhost:3000/user"); // Redirect to the user page
+      return res.redirect("http://localhost:5000/user"); // Redirect to the user page
     } else {
       // If the user is not authenticated via Google, handle failed sign-in
-      return res.redirect("http://localhost:3000/auth/signup");
+      return res.redirect("http://localhost:5000/auth/signup");
     }
   })(req, res, next); // Invoke the custom callback function
 });
