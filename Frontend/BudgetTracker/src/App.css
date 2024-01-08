@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components
+{
+    .content_text
+    {
+        @apply font-medium m-2 text-black 
+    }
+    .input_bar
+    {
+        @apply w-full h-8 pl-3 pr-10 text-base placeholder-gray-600 border rounded-lg m-2    
+    }
+    .btn
+    { 
+        @apply border-white border-2 rounded-lg text-white p-1 bg-sky-500 font-medium text-base
+    }
+}

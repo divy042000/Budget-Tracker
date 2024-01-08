@@ -8,7 +8,7 @@ const Transaction = () => {
  const [selectedField, setSelectedField] = useState('expense');
  console.log(hoveredField," ",selectedField);
  return (
-  <div>
+  <div className="flex flex-col border-2">
 <div className="flex flex-row space-x-4 p-4 bg-gray-200 rounded-md border-3 rounded">
   <div className="flex"> 
   <div className="flex flex-col">
@@ -20,7 +20,6 @@ const Transaction = () => {
  >
    Income
  </button>
- {((hoveredField === 'income') && (selectedField === 'income')) && <IncomeComponent />}
   </div>
 <div>
 <button 
@@ -32,7 +31,6 @@ const Transaction = () => {
  >
    Expense
  </button>
- {((hoveredField === 'expense') && (selectedField === 'expense')) && <ExpenseComponent />}
 </div>
 <div>
 <button 
@@ -43,13 +41,13 @@ const Transaction = () => {
  >
    Transfer
  </button>
- {((hoveredField === 'transfer') && (selectedField === 'transfer' )) && <TransferComponent/>}
 </div>
 </div>
 </div>
-<div>
-
-  
+<div className="flex border-2 border-black ">
+{((hoveredField === 'expense') && (selectedField === 'expense')) && <ExpenseComponent />}
+{((hoveredField === 'income') && (selectedField === 'income')) && <IncomeComponent />}
+{((hoveredField === 'transfer') && (selectedField === 'transfer' )) && <TransferComponent/>}  
 </div>
 </div>
  );

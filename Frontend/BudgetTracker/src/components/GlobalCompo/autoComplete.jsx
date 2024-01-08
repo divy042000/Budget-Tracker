@@ -29,7 +29,7 @@ const AutocompleteInput = ({ options }) => {
    type="text"
    value={inputValue}
    onChange={handleInputChange}
-   className="w-full h-10 pl-3 pr-10 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+   className="input_bar"
  />
  {filteredOptions.length > 0 && (
    <div className="absolute left-0 mt-2 w-full rounded-md shadow-lg">
@@ -47,8 +47,6 @@ const AutocompleteInput = ({ options }) => {
    </div>
  )}
 </div>
-
-
   </div>
 
  );
